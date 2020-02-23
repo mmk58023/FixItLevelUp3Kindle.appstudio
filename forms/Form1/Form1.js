@@ -45,3 +45,4 @@ if (userNeed === 'car') {
 }
   
 alert('Thank you for using the calculator!')
+alert(`Have a wonderful day, ${userName}!`)
