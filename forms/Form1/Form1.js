@@ -8,13 +8,16 @@ while (userName !== null) {
 
 //Base function
 function loanPayment (P, r, n) {
-  return P * (r * (Math.pow((1 + r),n))) / ((Math.pow((1 + r),n)) - 1);
+  return P * ((r*(Math.pow((1 + r),n)))/((Math.pow((1 + r),n))-1));
 }
 
 //Accumulation of user's loan details
   let initialAmount = parseFloat(prompt('What is the amount of your loan?'))
   let interestRate = parseFloat(prompt('What is the interest rate on your loan in decimal form? \n Example) 11% = 0.11'))
   let length = parseInt(prompt('What is the timeframe of your loan in years?'))
+
+//correction
+let correctRate = interestRate / 12
 
 //Calculation for the parameter n
   let numberOfMonths = length * 12
@@ -25,14 +28,14 @@ function loanPayment (P, r, n) {
 //Determine functions
 if (userNeed === 'car') {
 //Calling the function with the user's loan details as the parameters
-  let carPayment = loanPayment(initialAmount, interestRate, numberOfMonths)
+  let carPayment = loanPayment(initialAmount, correctRate, numberOfMonths)
 //Notification that the monthly payment has been calculated
     alert(`A car loan for ${initialAmount} over ${length} years at ${percent}% interest would have a monthly payment of ${carPayment}.`)
     console.log(`A car loan for ${initialAmount} over ${length} years at ${percent}% interest would have a monthly payment of ${carPayment}.`)
 //If the user enter's "home" calculator rather than "car" with the correct timeframe then the following will occur
   } else if ((userNeed === 'home') && ((length === 15) || (length === 30))) {
 //Calling the function with the user's loan details as the parameters
-    let homePayment = loanPayment(initialAmount, interestRate, numberOfMonths)
+    let homePayment = loanPayment(initialAmount, correctRate, numberOfMonths)
 //Notification that the monthly payment has been calculated
     alert(`A home loan for ${initialAmount} over ${length} years at ${percent}% interest would have a monthly payment of ${homePayment}.`)
     console.log(`A home loan for ${initialAmount} over ${length} years at ${percent}% interest would have a monthly payment of ${homePayment}.`)
